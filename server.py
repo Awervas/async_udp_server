@@ -43,7 +43,6 @@ async def start_udp_server(host, port, handler):
 
 
 def print_message(message:bytes, addr:str):
-    print(f"Received {message} from {addr}")
     print(message.decode('utf-8', errors='ignore'))
 
 if __name__ == '__main__':
