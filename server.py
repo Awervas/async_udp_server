@@ -50,7 +50,7 @@ async def start_udp_server(host, port, handler):
 
 
 def print_message(message:bytes, addr:str):
-    print(message.decode('utf-8', errors='ignore'))
+    print(message.decode('utf-8', errors='ignore'), end='')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Async UDP server')
