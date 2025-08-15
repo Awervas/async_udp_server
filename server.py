@@ -4,7 +4,7 @@ import logging
 from asyncio import Future
 from typing import List
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('UDPServer')
 
 VERSION = "1.0.0"
 
@@ -60,4 +60,9 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO)
-    asyncio.run(start_udp_server(args.bind, args.port, print_message))
+    try:
+        asyncio.run(start_udp_server(args.bind, args.port, print_message))
+
+    except KeyboardInterrupt:
+        pass
+
