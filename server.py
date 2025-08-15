@@ -36,6 +36,13 @@ async def start_udp_server(host, port, handler):
     try:
         while 1:
             await asyncio.sleep(3600)
+
+    except KeyboardInterrupt:
+        return
+
+    except asyncio.CancelledError:
+        return
+
     finally:
         if transport:
             transport.close()
@@ -54,5 +61,3 @@ if __name__ == '__main__':
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO)
     asyncio.run(start_udp_server(args.bind, args.port, print_message))
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(start_udp_server('127.0.0.1', 9999, None))
